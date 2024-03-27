@@ -1,24 +1,5 @@
 {% extends "main.html" %} {% block content %}
 
-<table>
-	<tr>
-		<th>Project</th>
-		<th>Positive Votes</th>
-		<th>Votes</th>
-		<th>Created At</th>
-		<th></th>
-		<th></th>
-		<th></th>
-	</tr>
-	{% for project in projects %}
-	<tr>
-		<td><a href="{% url 'update-project' project.id %}">Edit</a></td>
-		<td><a href="{% url 'delete-project' project.id %}">Delete</a></td>
-		<td><a href="{% url 'project' project.id %}">View</a></td>
-	</tr>
-	{% endfor %}
-</table>
-
 <main class="projects">
 	<section class="hero-section text-center">
 		<div class="container container--narrow">
@@ -27,14 +8,15 @@
 			</div>
 
 			<div class="hero-section__search">
-				<form class="form" action="#" method="get">
+				<form class="form" action="{% url 'projects' %}" method="get">
 					<div class="form__field">
 						<label for="formInput#search">Search By Projects </label>
 						<input
 							class="input input--text"
 							id="formInput#search"
 							type="text"
-							name="text"
+							name="search_query"
+							value="{{search_query}}"
 							placeholder="Search by Project Title"
 						/>
 					</div>
