@@ -65,6 +65,6 @@
 			</div>
 		</div>
 	</section>
+	{% include 'pagination.html' with queryset=projects customRange=customRange search_query=search_query %}
 </main>
-
 {% endblock content %}
