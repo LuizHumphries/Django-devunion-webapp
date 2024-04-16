@@ -5,7 +5,11 @@
     <div class="message">
       <a class="backButton" href="{% url 'inbox' %}"><i class="fa-solid fa-angle-left"></i></a>
       <h2 class="message__subject">{{message_data.subject}}</h4>
-        <a href="profile.html" class="message__author">Dennis Ivanov</a>
+        {% if message_data.sender %}
+        <a href="{% url 'user_profile' message_data.sender.id %}" class="message__author">{{message_data.name}}</a>
+        {% else %}
+        <p class="message__author">{{message.name}}</p>
+        {% endif %}
         <p class="message__date">{{message_data.created}}</p>
         <div class="message__body">{{message_data.body|linebreaksbr}}
         </div>
